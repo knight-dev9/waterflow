@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:waterflow_animation/float_animation.dart';
-import 'package:waterflow_animation/flow_animation.dart';
+import 'package:waterflow/helpers/float_animation.dart';
+import 'package:waterflow/helpers/flow_animation.dart';
 
-class SplashPageOrange extends StatefulWidget {
-  const SplashPageOrange({super.key});
+class OrangeLove extends StatelessWidget {
+  const OrangeLove({super.key});
 
-  @override
-  State<StatefulWidget> createState() {
-    return _SplashPageOrange();
-  }
-}
-
-class _SplashPageOrange extends State<SplashPageOrange> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -76,36 +69,21 @@ class _SplashPageOrange extends State<SplashPageOrange> {
   Widget get projectTitle {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final logoSize = constraints.maxWidth * 0.125;
-
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Image.asset(
-              'assets/images/knight_logo.png',
-              width: logoSize,
-              height: logoSize,
-            ),
-            const SizedBox(width: 10),
-            Text(
-              'I Love Orange',
-              style: GoogleFonts.playball(
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: constraints.maxWidth * 0.08,
-                  ),
-                  shadows: [
-                    const Shadow(
-                      color: Colors.orangeAccent,
-                      blurRadius: 10,
-                      offset: Offset(1, 3),
-                    )
-                  ]),
-              textAlign: TextAlign.center,
-            ),
-          ],
+        return Text(
+          'I Love Orange',
+          style: GoogleFonts.playball(
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontSize: constraints.maxWidth * 0.08,
+              ),
+              shadows: [
+                const Shadow(
+                  color: Colors.orangeAccent,
+                  blurRadius: 10,
+                  offset: Offset(1, 3),
+                )
+              ]),
+          textAlign: TextAlign.center,
         );
       },
     );

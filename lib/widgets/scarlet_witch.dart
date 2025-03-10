@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:waterflow_animation/float_animation.dart';
-import 'package:waterflow_animation/flow_animation.dart';
+import 'package:waterflow/helpers/float_animation.dart';
+import 'package:waterflow/helpers/flow_animation.dart';
 
-class SplashPageScarletWitch extends StatefulWidget {
-  const SplashPageScarletWitch({super.key});
+class ScarletWitch extends StatelessWidget {
+  const ScarletWitch({super.key});
 
-  @override
-  State<StatefulWidget> createState() {
-    return _SplashPageScarletWitch();
-  }
-}
-
-class _SplashPageScarletWitch extends State<SplashPageScarletWitch> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -36,7 +29,7 @@ class _SplashPageScarletWitch extends State<SplashPageScarletWitch> {
                     child: Transform.rotate(
                       angle: 0,
                       child: Image.asset(
-                        'assets/images/scarlet_witch1.png',
+                        'assets/images/scarlet_witch.png',
                         width: size.width * 0.8,
                         height: size.width * 0.8,
                       ),
@@ -78,36 +71,21 @@ class _SplashPageScarletWitch extends State<SplashPageScarletWitch> {
   Widget get projectTitle {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final logoSize = constraints.maxWidth * 0.125;
-
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Image.asset(
-              'assets/images/knight_logo.png',
-              width: logoSize,
-              height: logoSize,
-            ),
-            const SizedBox(width: 10),
-            Text(
-              'Scarlet Witch',
-              style: GoogleFonts.playball(
-                  textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: constraints.maxWidth * 0.08,
-                  ),
-                  shadows: [
-                    const Shadow(
-                      color: Colors.red,
-                      blurRadius: 10,
-                      offset: Offset(1, 3),
-                    )
-                  ]),
-              textAlign: TextAlign.center,
-            ),
-          ],
+        return Text(
+          'Scarlet Witch',
+          style: GoogleFonts.playball(
+              textStyle: TextStyle(
+                color: Colors.white,
+                fontSize: constraints.maxWidth * 0.08,
+              ),
+              shadows: [
+                const Shadow(
+                  color: Colors.red,
+                  blurRadius: 10,
+                  offset: Offset(1, 3),
+                )
+              ]),
+          textAlign: TextAlign.center,
         );
       },
     );

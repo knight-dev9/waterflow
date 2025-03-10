@@ -1,4 +1,4 @@
-package com.knight.waterflow_animation
+package com.knight.waterflow
 
 import io.flutter.embedding.android.FlutterActivity
 

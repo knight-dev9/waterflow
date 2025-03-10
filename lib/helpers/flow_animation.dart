@@ -42,9 +42,12 @@ class _FlowAnimation extends State<FlowAnimation>
     animation1 = Tween<double>(begin: 1.5, end: 2.1)
         .animate(CurvedAnimation(parent: controller1, curve: Curves.easeInOut))
       ..addListener(() {
-        setState(() {});
+        setStateIfMounted(() {});
       })
       ..addStatusListener((status) {
+        if (!mounted) {
+          return;
+        }
         if (status == AnimationStatus.completed) {
           controller1.reverse();
         } else if (status == AnimationStatus.dismissed) {
@@ -56,9 +59,12 @@ class _FlowAnimation extends State<FlowAnimation>
     animation2 = Tween<double>(begin: 1.4, end: 2.4)
         .animate(CurvedAnimation(parent: controller2, curve: Curves.easeInOut))
       ..addListener(() {
-        setState(() {});
+        setStateIfMounted(() {});
       })
       ..addStatusListener((status) {
+        if (!mounted) {
+          return;
+        }
         if (status == AnimationStatus.completed) {
           controller2.reverse();
         } else if (status == AnimationStatus.dismissed) {
@@ -70,9 +76,12 @@ class _FlowAnimation extends State<FlowAnimation>
     animation3 = Tween<double>(begin: 1.4, end: 2.4)
         .animate(CurvedAnimation(parent: controller3, curve: Curves.easeInOut))
       ..addListener(() {
-        setState(() {});
+        setStateIfMounted(() {});
       })
       ..addStatusListener((status) {
+        if (!mounted) {
+          return;
+        }
         if (status == AnimationStatus.completed) {
           controller3.reverse();
         } else if (status == AnimationStatus.dismissed) {
@@ -84,9 +93,12 @@ class _FlowAnimation extends State<FlowAnimation>
     animation4 = Tween<double>(begin: 1.5, end: 2.1)
         .animate(CurvedAnimation(parent: controller4, curve: Curves.easeInOut))
       ..addListener(() {
-        setState(() {});
+        setStateIfMounted(() {});
       })
       ..addStatusListener((status) {
+        if (!mounted) {
+          return;
+        }
         if (status == AnimationStatus.completed) {
           controller4.reverse();
         } else if (status == AnimationStatus.dismissed) {
@@ -95,15 +107,23 @@ class _FlowAnimation extends State<FlowAnimation>
       });
 
     Timer(const Duration(seconds: 2), () {
-      controller1.forward();
+      if (mounted) {
+        controller1.forward();
+      }
     });
     Timer(const Duration(milliseconds: 1600), () {
-      controller2.forward();
+      if (mounted) {
+        controller2.forward();
+      }
     });
     Timer(const Duration(milliseconds: 800), () {
-      controller3.forward();
+      if (mounted) {
+        controller3.forward();
+      }
     });
-    controller4.forward();
+    if (mounted) {
+      controller4.forward();
+    }
   }
 
   @override
@@ -134,5 +154,13 @@ class _FlowAnimation extends State<FlowAnimation>
         );
       },
     );
+  }
+}
+
+extension StateX on State {
+  void setStateIfMounted(VoidCallback callback) {
+    if (mounted) {
+      setState(callback);
+    }
   }
 }

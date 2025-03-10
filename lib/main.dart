@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
-import '../splash_page_orange.dart';
+import 'package:waterflow/pages/splash_page.dart';
+import 'package:waterflow/widgets/orange_love.dart';
+import 'package:waterflow/widgets/scarlet_witch.dart';
+import 'package:waterflow/widgets/xbox_controller.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Waterflow',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashPageOrange(),
+      home: const SplashPage(
+        pages: [
+          OrangeLove(),
+          XboxController(),
+          ScarletWitch(),
+        ],
+      ),
     );
   }
 }
